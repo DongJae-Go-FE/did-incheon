@@ -82,6 +82,21 @@ const useSchene = (
 
   const handleWheel = useCallback(
     (e: WheelEvent) => {
+      //
+      const target = e.target as HTMLElement;
+      const notionContainer = target.closest(".notion-container");
+
+      if (notionContainer) {
+        const isAtTop = notionContainer.scrollTop === 0;
+        const isAtBottom =
+          notionContainer.scrollTop + notionContainer.clientHeight >=
+          notionContainer.scrollHeight - 1;
+
+        if ((e.deltaY > 0 && !isAtBottom) || (e.deltaY < 0 && !isAtTop)) {
+          return;
+        }
+      }
+
       e.preventDefault();
 
       if (isWheelActive) return;
@@ -138,6 +153,23 @@ const useSchene = (
 
   const handleTouchMove = useCallback(
     (e: TouchEvent) => {
+      const target = e.target as HTMLElement;
+      const notionContainer = target.closest(".notion-container");
+
+      if (notionContainer) {
+        const isAtTop = notionContainer.scrollTop === 0;
+        const isAtBottom =
+          notionContainer.scrollTop + notionContainer.clientHeight >=
+          notionContainer.scrollHeight - 1;
+
+        const isScrollingDown = e.touches[0].pageY < touchStartY;
+        const isScrollingUp = e.touches[0].pageY > touchStartY;
+
+        if ((isScrollingDown && !isAtBottom) || (isScrollingUp && !isAtTop)) {
+          return;
+        }
+      }
+
       if (isTouchActive) return;
 
       setIsTouchActive(true);
