@@ -8,7 +8,7 @@ import Footer from "@/components/ui/footer";
 import { Context } from "@/components/context";
 import useSchene from "@/hooks/useSchene";
 
-import ScrollDown from "@/components/scroll-down";
+// import ScrollDown from "@/components/scroll-down";
 import NotionPage from "@/components/notion-page";
 
 export default function Home() {
@@ -33,6 +33,9 @@ export default function Home() {
             ref={schene.ref || null}
             className="h-[calc(100%-80px)] w-full transition-all duration-1000"
           >
+            <div className="w-full h-full bg-white">
+              <NotionPage pageId="2ccbffe5bb0280a6afb9c8749fd857e2" />
+            </div>
             <div className="w-full h-full bg-[#81BBFA] relative">
               <Image
                 src="/main01.jpg"
@@ -42,11 +45,9 @@ export default function Home() {
                 className="h-full w-full object-contain"
                 priority
               />
-              <ScrollDown />
+              {/* <ScrollDown /> */}
             </div>
-            <div className="w-full h-full bg-white">
-              <NotionPage pageId="2ccbffe5bb0280a6afb9c8749fd857e2" />
-            </div>
+
             <Footer />
           </div>
         </div>
