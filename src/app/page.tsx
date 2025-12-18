@@ -1,25 +1,56 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+
+import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
+
+import { Context } from "@/components/context";
+import useSchene from "@/hooks/useSchene";
+
+import ScrollDown from "@/components/scroll-down";
+import NotionPage from "@/components/notion-page";
 
 export default function Home() {
+  const schene = useSchene([
+    {
+      totalFrame: 1,
+    },
+    {
+      totalFrame: 1,
+    },
+    {
+      totalFrame: 1,
+    },
+  ]);
+
   return (
-    <main className="pt-20">
-      <Image
-        src="/main01.jpg"
-        alt="인천교구 봉사자 모집"
-        width={1920}
-        height={1080}
-        priority
-      />
-      <div className="w-dvw h-[calc(100dvh-80px)] bg-gray-100 flex justify-center items-center">
-        <Link
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfYQXg8ml6O5xeZG6AZqpeMehqAYcNqkowahRNR1LI1k6DHiA/viewform?usp=sharing&ouid=103729609757395706973"
-          target="_blank"
-          className="bg-gray-900 text-white h-12 px-4 flex justify-center items-center rounded-md body02B hover:bg-gray-600 transition-colors duration-300"
-        >
-          WYD 인천 등록
-        </Link>
-      </div>
-    </main>
+    <Context value={schene}>
+      <Header />
+      <main className="pt-20">
+        <div className="fixed h-full w-full overflow-hidden border-b transition-all duration-1000">
+          <div
+            ref={schene.ref || null}
+            className="h-[calc(100%-80px)] w-full transition-all duration-1000"
+          >
+            <div className="w-full h-full bg-[#81BBFA] relative">
+              <Image
+                src="/main01.jpg"
+                alt="인천교구 봉사자 모집"
+                width={1920}
+                height={1080}
+                className="h-full w-full object-contain"
+                priority
+              />
+              <ScrollDown />
+            </div>
+            <div className="w-full h-full bg-white">
+              <NotionPage pageId="2ccbffe5bb0280a6afb9c8749fd857e2" />
+            </div>
+            <Footer />
+          </div>
+        </div>
+      </main>
+    </Context>
   );
 }

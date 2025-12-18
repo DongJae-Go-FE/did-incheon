@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* react-notion-x styles */
+@import "react-notion-x/src/styles.css";
+@import "prismjs/themes/prism-tomorrow.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
