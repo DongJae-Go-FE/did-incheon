@@ -45,7 +45,7 @@ export default function Home() {
                 className="h-full w-full object-contain"
                 priority
               />
-              {/* <ScrollDown /> */}
+              {/* <ScrollDown /> .*/}
             </div>
 
             <Footer />
