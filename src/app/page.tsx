@@ -34,7 +34,7 @@ export default function Home() {
             className="h-[calc(100%-80px)] w-full transition-all duration-1000"
           >
             <div className="w-full h-full bg-white">
-              <NotionPage pageId="2ccbffe5bb0280a6afb9c8749fd857e2" />
+              <NotionPage pageId="d6c98c2224d64d88904b262acb7abb8d" />
             </div>
             <div className="w-full h-full bg-[#81BBFA] relative">
               <Image

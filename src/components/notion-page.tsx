@@ -96,7 +96,7 @@ export default function NotionPage({ pageId }: NotionPageProps) {
       <NotionRenderer
         recordMap={recordMap}
         fullPage={true}
-        className="[&_main]:w-full! [&_header]:relative!"
+        className="[&_header]:relative!"
         darkMode={false}
         disableHeader={false}
         mapPageUrl={mapPageUrl}
