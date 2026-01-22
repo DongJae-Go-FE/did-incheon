@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full h-20 bg-white flex items-center justify-between z-50 px-15 max-[1079px]:px-8 shadow-sm">
+    <header className="fixed top-0 left-0 w-full h-20 bg-white flex items-center justify-between z-50 px-16 max-[1079px]:px-8 shadow-sm">
       <h1>
         <Link href="/" className="flex items-center gap-x-1">
           <Image
@@ -11,11 +11,35 @@ export default function Header() {
             width={120}
             height={60}
             alt="wyd did 인천 로고"
-            className="h-full"
             priority
           />
         </Link>
       </h1>
+      <nav className="hidden lg:flex">
+        <ul className="flex items-center gap-8 body01M text-gray-800">
+          <li>
+            <Link href="#home">홈</Link>
+          </li>
+          <li>
+            <Link href="#apply">신청</Link>
+          </li>
+          <li>
+            <Link href="#calendar">캘린더</Link>
+          </li>
+          <li>
+            <Link href="#youtube">영상</Link>
+          </li>
+          <li>
+            <Link href="#notice">공지</Link>
+          </li>
+          <li>
+            <Link href="#site">사이트</Link>
+          </li>
+          <li>
+            <Link href="#faq">FAQ</Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }

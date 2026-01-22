@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import SmoothScrolling from "@/components/smooth-scroll";
 import localFont from "next/font/local";
 
 import "./globals.css";
@@ -35,12 +36,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={pretendard.className}>{children}</body>
+    <html lang="ko" className="lenis lenis-smooth">
+      <body className={pretendard.className}>
+        <SmoothScrolling>{children}</SmoothScrolling>
+        {modal}
+        <div id="modal-root" />
+      </body>
     </html>
   );
 }
