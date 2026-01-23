@@ -4,7 +4,7 @@ import Popup from "@/components/popup";
 import BackToTop from "@/components/ui/back-to-top";
 
 import SliderSection from "@/components/pages/slide-section";
-import ApplySection from "@/components/pages/apply-section";
+//import ApplySection from "@/components/pages/apply-section";
 import CalendarSection from "@/components/pages/calendar-section";
 import YoutubeSection from "@/components/pages/youtube-section";
 import NoticeSection from "@/components/pages/notice-section";
@@ -17,7 +17,7 @@ export default function Home() {
       <Header />
       <main className="pt-20">
         <SliderSection />
-        <ApplySection />
+        {/* <ApplySection /> */}
         <CalendarSection />
         <YoutubeSection />
         <NoticeSection />
