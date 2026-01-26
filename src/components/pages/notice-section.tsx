@@ -65,12 +65,14 @@ export default function NoticeSection() {
             <Link
               key={notice.id}
               href={`/notice/${notice.id}`}
-              className="flex items-center justify-between py-10 text-black group"
+              className="flex items-center justify-between py-10 text-black group max-sm:py-4 max-[1079px]:py-6"
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <span className="heading02M max-sm:heading04M hover:underline underline-offset-4 max-w-3/4">{notice.title}</span>
-              <span className="body02R text-gray-600">
+              <span className="heading02M max-[1079px]:heading03M max-sm:heading04M hover:underline underline-offset-4 max-w-3/4">
+                {notice.title}
+              </span>
+              <span className="body02R text-gray-600 max-md:body03R">
                 {notice.date}
               </span>
             </Link>

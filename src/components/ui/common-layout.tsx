@@ -6,7 +6,7 @@ function Section({ children, className, ...props }: ComponentProps<"section">) {
   return (
     <section
       className={cn(
-        "w-full min-h-[calc(100vh-80px)] p-16 scroll-mt-20",
+        "w-full min-h-[calc(100vh-80px)] p-16 scroll-mt-20 max-sm:px-4 max-[1079px]:px-8 max-sm:min-h-auto",
         className,
       )}
       {...props}
