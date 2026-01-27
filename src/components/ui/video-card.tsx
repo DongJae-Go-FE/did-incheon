@@ -18,7 +18,7 @@ export default function VideoCard({ videoId, title, date }: VideoCardProps) {
           allowFullScreen
         />
       </div>
-      <div className="flex-1 flex flex-col pt-10 pb-30.5 gap-y-15 text-gray-900 max-sm:gap-y-8">
+      <div className="flex-1 flex flex-col pt-10 pb-30.5 gap-y-15 text-gray-900 max-sm:gap-y-8 max-sm:pb-10">
         <h3 className="heading01B max-sm:heading04B">{title}</h3>
         <p className="body01M max-md:heading04M">{date}</p>
         <Link
