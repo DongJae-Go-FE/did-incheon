@@ -1,6 +1,6 @@
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-import Popup from "@/components/popup";
+//import Popup from "@/components/popup";
 import BackToTop from "@/components/ui/back-to-top";
 
 import SliderSection from "@/components/pages/slide-section";
@@ -25,7 +25,7 @@ export default function Home() {
         <FaqSection />
       </main>
       <Footer />
-      <Popup />
+      {/* <Popup /> */}
       <BackToTop />
     </>
   );
