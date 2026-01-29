@@ -21,12 +21,12 @@ export default function Footer() {
           </Link>
         </h3>
         <address className="not-italic">
+          <h4 className="heading04B mb-1">Contact</h4>
           <ul className="flex flex-col gap-y-2 body02R">
             <li>
-              도로명 주소 : 인천광역시 동구 박문로 1 인천교구청 102호 WYD 인천
-              교구대회 사무국
+              인천광역시 동구 박문로 1 인천교구청 102호 WYD 인천 교구대회 사무국
             </li>
-            <li>이메일 : qna.wyd.doc.icn@gmail.com</li>
+            <li>qna.wyd.doc.icn@gmail.com</li>
           </ul>
         </address>
       </div>
