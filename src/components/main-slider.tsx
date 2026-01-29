@@ -147,10 +147,10 @@ export default function MainSlider() {
           <SliderItem03 />
         </Panel>
         <Panel>
-          <SliderItem01 />
+          <SliderItem02 />
         </Panel>
         <Panel>
-          <SliderItem02 />
+          <SliderItem01 />
         </Panel>
         <Panel>
           <SliderItem04 />
@@ -173,16 +173,16 @@ export default function MainSlider() {
             <Pause
               width={40}
               height={40}
-              fill={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
-              stroke={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
+              fill={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
+              stroke={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
               strokeWidth={1}
             />
           ) : (
             <Play
               width={40}
               height={40}
-              fill={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
-              stroke={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
+              fill={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
+              stroke={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
               strokeWidth={1}
             />
           )}
@@ -197,13 +197,13 @@ export default function MainSlider() {
           <ChevronLeft
             width={48}
             height={48}
-            stroke={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
+            stroke={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
           />
         </button>
         <div
           className={cn(
             "flicking-pagination relative! bottom-0! w-30!",
-            [0, 1,4].includes(currentIndex) && "[&_span]:text-black!",
+            [0, 1, 4].includes(currentIndex) && "[&_span]:text-black!",
           )}
         />
         <button
@@ -216,7 +216,7 @@ export default function MainSlider() {
           <ChevronRight
             width={48}
             height={48}
-            stroke={[0, 1,4].includes(currentIndex) ? "#000" : "#fff"}
+            stroke={[0, 1, 4].includes(currentIndex) ? "#000" : "#fff"}
           />
         </button>
       </div>
