@@ -21,9 +21,6 @@ export default function Header() {
             <Link href="#home">홈</Link>
           </li>
           <li>
-            <Link href="#apply">신청</Link>
-          </li>
-          <li>
             <Link href="#calendar">캘린더</Link>
           </li>
           <li>
