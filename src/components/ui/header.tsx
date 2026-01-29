@@ -20,16 +20,16 @@ export default function Header() {
           <li>
             <Link href="#home">홈</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="#apply">신청</Link>
           </li>
           <li>
             <Link href="#calendar">캘린더</Link>
-          </li>
+          </li> */}
           <li>
             <Link href="#youtube">영상</Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="#notice">공지</Link>
           </li>
           <li>
@@ -37,7 +37,7 @@ export default function Header() {
           </li>
           <li>
             <Link href="#faq">FAQ</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

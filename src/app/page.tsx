@@ -5,11 +5,11 @@ import BackToTop from "@/components/ui/back-to-top";
 
 import SliderSection from "@/components/pages/slide-section";
 // import ApplySection from "@/components/pages/apply-section";
-import CalendarSection from "@/components/pages/calendar-section";
+//import CalendarSection from "@/components/pages/calendar-section";
 import YoutubeSection from "@/components/pages/youtube-section";
-import NoticeSection from "@/components/pages/notice-section";
-import SiteSection from "@/components/pages/site-section";
-import FaqSection from "@/components/pages/faq-section";
+//import NoticeSection from "@/components/pages/notice-section";
+//import SiteSection from "@/components/pages/site-section";
+//import FaqSection from "@/components/pages/faq-section";
 
 export default function Home() {
   return (
@@ -18,11 +18,11 @@ export default function Home() {
       <main className="pt-20">
         <SliderSection />
         {/* <ApplySection /> */}
-        <CalendarSection />
+        {/* <CalendarSection /> */}
         <YoutubeSection />
-        <NoticeSection />
-        <SiteSection />
-        <FaqSection />
+        {/* <NoticeSection /> */}
+        {/* <SiteSection /> */}
+        {/* <FaqSection /> */}
       </main>
       <Footer />
       {/* <Popup /> */}
