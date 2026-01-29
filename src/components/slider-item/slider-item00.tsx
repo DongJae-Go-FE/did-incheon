@@ -1,18 +1,18 @@
 import Image from "next/image";
 
-export default function SliderItem03() {
+export default function SliderItem00() {
   return (
-    <div className="relative w-full h-[calc(100vh-80px)]">
+    <div className="relative w-full h-[calc(100vh-80px)] bg-[#F5EBDB]">
       <Image
-        src="/main/main03m.png"
-        alt="부스초대"
+        src="/main/main00m.png"
+        alt="인천교구 wyd open"
         fill
         className="object-contain md:hidden"
         priority
       />
       <Image
-        src="/main/main03.png"
-        alt="부스초대"
+        src="/main/main00.png"
+        alt="인천교구 wyd open"
         fill
         className="object-contain hidden md:block"
         priority
