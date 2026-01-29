@@ -4,7 +4,7 @@ import VideoCard from "@/components/ui/video-card";
 
 export default function YoutubeSection() {
   return (
-    <Section id="youtube">
+    <Section id="youtube" style={{ backgroundImage: "url('/bg01.png')" }} className="bg-no-repeat bg-fixed bg-cover">
       <SectionTitle>추천 영상</SectionTitle>
       <ul
         className="grid gap-x-4"

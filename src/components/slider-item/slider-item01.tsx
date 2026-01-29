@@ -2,12 +2,19 @@ import Image from "next/image";
 
 export default function SliderItem01() {
   return (
-    <div className="relative w-full h-[calc(100vh-80px)] bg-[#81BBFA]">
+    <div className="relative w-full h-[calc(100vh-80px)] bg-[#FFBABA]">
       <Image
-        src="/main01.jpg"
-        alt="인천교구 봉사자 모집"
+        src="/main/main01m.png"
+        alt="인천교구 wyd 설명회"
         fill
-        className="object-contain"
+        className="object-contain lg:hidden"
+        priority
+      />
+      <Image
+        src="/main/main01.png"
+        alt="인천교구 wyd 설명회"
+        fill
+        className=" aspect-square hidden lg:block"
         priority
       />
     </div>

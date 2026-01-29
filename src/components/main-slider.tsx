@@ -20,6 +20,9 @@ import "@egjs/flicking/dist/flicking.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 
 import SliderItem01 from "./slider-item/slider-item01";
+import SliderItem02 from "./slider-item/slider-item02";
+import SliderItem03 from "./slider-item/slider-item03";
+import SliderItem04 from "./slider-item/slider-item04";
 
 export default function MainSlider() {
   const flickingRef = useRef<HTMLDivElement>(null);
@@ -28,6 +31,7 @@ export default function MainSlider() {
 
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (flickingRef.current) {
@@ -55,7 +59,7 @@ export default function MainSlider() {
       const paginationInstance = new Pagination({
         type: "fraction",
         renderFraction: (currentClass, totalClass) => {
-          return `<span class="${currentClass} heading01B text-white"></span> <span class="heading03r text-gray-100"> / </span> <span class="${totalClass} heading03r text-gray-100"></span>`;
+          return `<span class="${currentClass} heading01B text-white"></span> <span class="heading03r text-gray-100"> / </span> <span class="${totalClass} heading03r text-gray-100 duration-200 transition-colors"></span>`;
         },
         fractionCurrentFormat: (index) => {
           return `0${index.toString()}`;
@@ -71,6 +75,7 @@ export default function MainSlider() {
 
       flickingInstance.on("moveStart", () => setIsAnimating(true));
       flickingInstance.on("moveEnd", () => setIsAnimating(false));
+      flickingInstance.on("changed", (e) => setCurrentIndex(e.index));
 
       flickingInstance.resize();
 
@@ -138,7 +143,13 @@ export default function MainSlider() {
           <SliderItem01 />
         </Panel>
         <Panel>
-          <SliderItem01 />
+          <SliderItem02 />
+        </Panel>
+        <Panel>
+          <SliderItem03 />
+        </Panel>
+        <Panel>
+          <SliderItem04 />
         </Panel>
       </div>
       <div
@@ -158,16 +169,16 @@ export default function MainSlider() {
             <Pause
               width={40}
               height={40}
-              fill="#fff"
-              stroke="#fff"
+              fill={currentIndex === 2 ? "#000" : "#fff"}
+              stroke={currentIndex === 2 ? "#000" : "#fff"}
               strokeWidth={1}
             />
           ) : (
             <Play
               width={40}
               height={40}
-              fill="#fff"
-              stroke="#fff"
+              fill={currentIndex === 2 ? "#000" : "#fff"}
+              stroke={currentIndex === 2 ? "#000" : "#fff"}
               strokeWidth={1}
             />
           )}
@@ -179,9 +190,18 @@ export default function MainSlider() {
           className="cursor-pointer"
           onClick={handlePrevSlide}
         >
-          <ChevronLeft width={48} height={48} stroke="#fff" />
+          <ChevronLeft
+            width={48}
+            height={48}
+            stroke={currentIndex === 2 ? "#000" : "#fff"}
+          />
         </button>
-        <div className="flicking-pagination relative! bottom-0! w-30!" />
+        <div
+          className={cn(
+            "flicking-pagination relative! bottom-0! w-30!",
+            currentIndex === 2 && "[&_span]:text-black!",
+          )}
+        />
         <button
           type="button"
           title="다음 슬라이드 버튼"
@@ -189,7 +209,11 @@ export default function MainSlider() {
           className="cursor-pointer"
           onClick={handleNextSlide}
         >
-          <ChevronRight width={48} height={48} stroke="#fff" />
+          <ChevronRight
+            width={48}
+            height={48}
+            stroke={currentIndex === 2 ? "#000" : "#fff"}
+          />
         </button>
       </div>
     </div>

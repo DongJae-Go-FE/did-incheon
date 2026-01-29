@@ -3,7 +3,10 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-dvw flex h-74 justify-between bg-white px-16 py-7.5 text-black max-[1079px]:flex-wrap max-[1079px]:h-auto max-[1079px]:gap-y-8 max-[1079px]:px-8 max-[1079px]:py-12 max-sm:px-4">
+    <footer
+      className="w-dvw flex h-74 justify-between bg-white px-16 py-7.5 text-black max-[1079px]:flex-wrap max-[1079px]:h-auto max-[1079px]:gap-y-8 max-[1079px]:px-8 max-[1079px]:py-12 max-sm:px-4 bg-no-repeat bg-bottom-right"
+      style={{ backgroundImage: "url('/footer-bg.png')" }}
+    >
       <div className="flex flex-col">
         <h3 className="mb-6">
           <Link href="/" className="flex items-center gap-x-1">
