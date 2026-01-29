@@ -23,7 +23,7 @@ export default function Footer() {
         <address className="not-italic">
           <ul className="flex flex-col gap-y-2 body02R">
             <li>도로명 주소 : 인천광역시 동구 박문로 1 인천교구청 102호 WYD 인천 교구대회 사무국</li>
-            <li>지번 주소 : 인천광역시 동구 송림동 103-25 인천교구청 102호 WYD 인천 교구대회 사무국</li>
+            <li>지번 주소 : 인천광역시 동구 송림동 103-25</li>
             <li>이메일 : masterforce999@naver.com</li>
           </ul>
         </address>
