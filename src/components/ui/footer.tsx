@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <footer
-      className="w-dvw flex h-74 justify-between bg-white px-16 py-7.5 text-black max-[1079px]:flex-wrap max-[1079px]:h-auto max-[1079px]:gap-y-8 max-[1079px]:px-8 max-[1079px]:py-12 max-sm:px-4 bg-no-repeat bg-bottom-right"
+      className="w-dvw flex h-74 justify-between bg-white px-16 py-7.5 text-black max-[1079px]:flex-wrap max-[1079px]:h-auto max-[1079px]:gap-y-1 max-[1079px]:px-8 max-[1079px]:py-12 max-sm:px-4 bg-no-repeat bg-bottom-right"
       style={{ backgroundImage: "url('/footer-bg.png')" }}
     >
       <div className="flex flex-col">
@@ -31,9 +31,9 @@ export default function Footer() {
         </address>
       </div>
       <div>
-        <h3 className="heading03B">032-765-6997</h3>
+        <h3 className="heading03B max-[1079px]:mb-1">032-765-6997</h3>
         <p className="body02R">운영시간: 10:00 ~ 18:00</p>
-        <ul className="mt-4 mb-12 flex gap-x-4">
+        {/* <ul className="mt-4 mb-12 flex gap-x-4">
           <li>
             <Link
               href="http://www.caincheon.or.kr/"
@@ -43,7 +43,7 @@ export default function Footer() {
               인천교구청
             </Link>
           </li>
-          {/* <li>
+          <li>
             <Link
               href="https://youth.caincheon.or.kr/"
               className="body02R underline underline-offset-4"
@@ -51,8 +51,8 @@ export default function Footer() {
             >
               인천교구 청소년 사목국
             </Link>
-          </li> */}
-        </ul>
+          </li>
+        </ul> */}
         <p className="body02R">Copyright ⓒ 인천교구 All rights reserved</p>
       </div>
     </footer>
