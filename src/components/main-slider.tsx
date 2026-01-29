@@ -19,6 +19,7 @@ import { Pause, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import "@egjs/flicking/dist/flicking.css";
 import "@egjs/flicking-plugins/dist/pagination.css";
 
+import SliderItem00 from "./slider-item/slider-item00";
 import SliderItem01 from "./slider-item/slider-item01";
 import SliderItem02 from "./slider-item/slider-item02";
 import SliderItem03 from "./slider-item/slider-item03";
@@ -139,13 +140,16 @@ export default function MainSlider() {
     >
       <div className="flicking-camera">
         <Panel>
+          <SliderItem00 />
+        </Panel>
+        <Panel>
+          <SliderItem03 />
+        </Panel>
+        <Panel>
           <SliderItem01 />
         </Panel>
         <Panel>
           <SliderItem02 />
-        </Panel>
-        <Panel>
-          <SliderItem03 />
         </Panel>
       </div>
       <div
@@ -165,16 +169,16 @@ export default function MainSlider() {
             <Pause
               width={40}
               height={40}
-              fill={currentIndex === 2 ? "#000" : "#fff"}
-              stroke={currentIndex === 2 ? "#000" : "#fff"}
+              fill={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
+              stroke={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
               strokeWidth={1}
             />
           ) : (
             <Play
               width={40}
               height={40}
-              fill={currentIndex === 2 ? "#000" : "#fff"}
-              stroke={currentIndex === 2 ? "#000" : "#fff"}
+              fill={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
+              stroke={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
               strokeWidth={1}
             />
           )}
@@ -189,13 +193,13 @@ export default function MainSlider() {
           <ChevronLeft
             width={48}
             height={48}
-            stroke={currentIndex === 2 ? "#000" : "#fff"}
+            stroke={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
           />
         </button>
         <div
           className={cn(
             "flicking-pagination relative! bottom-0! w-30!",
-            currentIndex === 2 && "[&_span]:text-black!",
+            [0, 1].includes(currentIndex) && "[&_span]:text-black!",
           )}
         />
         <button
@@ -208,7 +212,7 @@ export default function MainSlider() {
           <ChevronRight
             width={48}
             height={48}
-            stroke={currentIndex === 2 ? "#000" : "#fff"}
+            stroke={[0, 1].includes(currentIndex) ? "#000" : "#fff"}
           />
         </button>
       </div>
