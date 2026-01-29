@@ -29,7 +29,7 @@ export default function Footer() {
         </address>
       </div>
       <div>
-        <h3 className="heading03B">032-765-6960</h3>
+        <h3 className="heading03B">032-765-6997</h3>
         <p className="body02R">운영시간: 10:00 ~ 18:00</p>
         <ul className="mt-4 mb-12 flex gap-x-4">
           <li>
