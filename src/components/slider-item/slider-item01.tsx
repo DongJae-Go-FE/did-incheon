@@ -7,14 +7,14 @@ export default function SliderItem01() {
         src="/main/main01m.png"
         alt="인천교구 wyd 설명회"
         fill
-        className="object-contain lg:hidden"
+        className="object-contain md:hidden"
         priority
       />
       <Image
         src="/main/main01.png"
         alt="인천교구 wyd 설명회"
         fill
-        className=" aspect-square hidden lg:block"
+        className="object-contain hidden md:block"
         priority
       />
     </div>
