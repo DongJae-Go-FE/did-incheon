@@ -54,7 +54,7 @@ export default function NoticeSection() {
     hoveredIndex !== null ? noticesData[hoveredIndex] : null;
 
   return (
-    <Section id="notice" className="bg-gray-100 min-h-auto">
+    <Section id="notice" className="bg-white min-h-auto">
       <SectionTitle>공지사항</SectionTitle>
 
       <div className="h-px bg-border" />
