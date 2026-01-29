@@ -41,7 +41,7 @@ export default function Footer() {
               인천교구청
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="https://youth.caincheon.or.kr/"
               className="body02R underline underline-offset-4"
@@ -49,7 +49,7 @@ export default function Footer() {
             >
               인천교구 청소년 사목국
             </Link>
-          </li>
+          </li> */}
         </ul>
         <p className="body02R">Copyright ⓒ 인천교구 All rights reserved</p>
       </div>
