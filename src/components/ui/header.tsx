@@ -15,28 +15,37 @@ export default function Header() {
           />
         </Link>
       </h1>
-      <nav className="hidden lg:flex">
-        <ul className="flex items-center gap-8 body01M text-gray-800">
-          <li>
-            <Link href="#home">홈</Link>
-          </li>
-          <li>
-            <Link href="#calendar">캘린더</Link>
-          </li>
-          <li>
-            <Link href="#youtube">영상</Link>
-          </li>
-          <li>
-            <Link href="#notice">공지</Link>
-          </li>
-          <li>
-            <Link href="#site">사이트</Link>
-          </li>
-          <li>
-            <Link href="#faq">FAQ</Link>
-          </li>
-        </ul>
-      </nav>
+      <div className="flex">
+        <Image
+          src="/logo2.png"
+          width={170}
+          height={80}
+          alt="wyd did 인천 로고"
+          priority
+        />
+        <nav className="hidden lg:flex ml-6">
+          <ul className="flex items-center gap-8 body01M text-gray-800">
+            <li>
+              <Link href="#home">홈</Link>
+            </li>
+            <li>
+              <Link href="#calendar">캘린더</Link>
+            </li>
+            <li>
+              <Link href="#youtube">영상</Link>
+            </li>
+            <li>
+              <Link href="#notice">공지</Link>
+            </li>
+            <li>
+              <Link href="#site">사이트</Link>
+            </li>
+            <li>
+              <Link href="#faq">FAQ</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
   );
 }
