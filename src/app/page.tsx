@@ -17,6 +17,9 @@ import {
   getFaqData,
 } from "@/lib/notion";
 
+// 캐시 비활성화 - Notion 수정 시 바로 반영
+export const revalidate = 0;
+
 export default async function Home() {
   const [calendarItems, noticeItems, youtubeItems, faqItems] = await Promise.all([
     getCalendarData(),
