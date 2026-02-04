@@ -15,18 +15,21 @@ import {
   getNoticeData,
   getYoutubeData,
   getFaqData,
+  getSiteData,
 } from "@/lib/notion";
 
 // 캐시 비활성화 - Notion 수정 시 바로 반영
 export const revalidate = 0;
 
 export default async function Home() {
-  const [calendarItems, noticeItems, youtubeItems, faqItems] = await Promise.all([
-    getCalendarData(),
-    getNoticeData(),
-    getYoutubeData(),
-    getFaqData(),
-  ]);
+  const [calendarItems, noticeItems, youtubeItems, faqItems, siteItems] =
+    await Promise.all([
+      getCalendarData(),
+      getNoticeData(),
+      getYoutubeData(),
+      getFaqData(),
+      getSiteData(),
+    ]);
 
   return (
     <>
@@ -36,7 +39,7 @@ export default async function Home() {
         <CalendarSection items={calendarItems.toReversed()} />
         <NoticeSection items={noticeItems.toReversed()} />
         <YoutubeSection items={youtubeItems.toReversed()} />
-        <SiteSection />
+        <SiteSection items={siteItems.toReversed()} />
         <FaqSection items={faqItems} />
       </main>
       <Footer />

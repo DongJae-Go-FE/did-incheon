@@ -357,3 +357,57 @@ export async function getFaqData(): Promise<FaqItem[]> {
       };
     });
 }
+
+// Site 관련
+export interface SiteItem {
+  id: string;
+  title: string;
+  href: string;
+  imageSrc: string;
+}
+
+export async function getSiteData(): Promise<SiteItem[]> {
+  const databaseId = process.env.NOTION_SITE_DATABASE_ID;
+
+  if (!databaseId) {
+    throw new Error("NOTION_SITE_DATABASE_ID is not set");
+  }
+
+  const response = await notion.databases.query({
+    database_id: databaseId,
+  });
+
+  return response.results
+    .filter((page): page is PageObjectResponse => "properties" in page)
+    .map((page) => {
+      const properties = page.properties;
+
+      const title =
+        properties["사이트명"]?.type === "title"
+          ? getPlainText(properties["사이트명"].title)
+          : "";
+
+      const href =
+        properties["URL"]?.type === "url"
+          ? properties["URL"].url || "/"
+          : "/";
+
+      const imageSrc =
+        properties["파일과 미디어"]?.type === "files"
+          ? getFileUrl(
+              properties["파일과 미디어"].files as Array<{
+                type: string;
+                file?: { url: string };
+                external?: { url: string };
+              }>
+            )
+          : "/main04.png";
+
+      return {
+        id: page.id,
+        title,
+        href,
+        imageSrc,
+      };
+    });
+}

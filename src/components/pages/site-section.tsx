@@ -9,6 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Section, SectionTitle, BackDrop } from "../ui/common-layout";
+import type { SiteItem } from "@/lib/notion";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,7 +23,7 @@ interface SiteCardProps {
 function SiteCard({ title, href, imageSrc }: SiteCardProps) {
   return (
     <div className="relative bg-black hover:[&_span]:bg-black">
-      <Link className="block" href={href}>
+      <Link className="block" href={href} target="_blank">
         <Image
           width={390}
           height={293}
@@ -41,18 +42,11 @@ function SiteCard({ title, href, imageSrc }: SiteCardProps) {
   );
 }
 
-const sites = [
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
-];
+interface SiteSectionProps {
+  items: SiteItem[];
+}
 
-export default function SiteSection() {
+export default function SiteSection({ items }: SiteSectionProps) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [progress, setProgress] = useState(0);
 
@@ -99,8 +93,8 @@ export default function SiteSection() {
           gridTemplateColumns: "repeat(auto-fit, minmax(min(300px,100%), 1fr))",
         }}
       >
-        {sites.map((site, index) => (
-          <li key={index}>
+        {items.map((site) => (
+          <li key={site.id}>
             <SiteCard
               title={site.title}
               href={site.href}
@@ -123,8 +117,8 @@ export default function SiteSection() {
           slidesPerView={1}
           className="[&_.swiper-slide]:h-auto!"
         >
-          {sites.map((site, index) => (
-            <SwiperSlide key={index}>
+          {items.map((site) => (
+            <SwiperSlide key={site.id}>
               <SiteCard
                 title={site.title}
                 href={site.href}
