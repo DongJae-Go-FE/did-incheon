@@ -1,16 +1,14 @@
-const faqData = [
-  { id: "faq1", title: "테스트1", content: "내용입니다1" },
-  { id: "faq2", title: "테스트2", content: "내용입니다2" },
-  { id: "faq3", title: "테스트3", content: "내용입니다3" },
-  // { id: "faq4", title: "테스트4", content: "내용입니다4" },
-  // { id: "faq5", title: "테스트5", content: "내용입니다5" },
-];
+import type { FaqItem } from "@/lib/notion";
 
-export default function Faq() {
+interface FaqProps {
+  items: FaqItem[];
+}
+
+export default function Faq({ items }: FaqProps) {
   return (
     <div className="flex mobile:flex-wrap tablet:flex-wrap">
       <ul className="flex w-full flex-col">
-        {faqData.map(({ id, title, content }, index) => {
+        {items.map(({ id, title, content }, index) => {
           return (
             <li key={id} className="group w-full overflow-hidden">
               <label

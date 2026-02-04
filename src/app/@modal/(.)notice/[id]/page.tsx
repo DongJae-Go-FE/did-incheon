@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Modal } from "@/components/modal";
 import { Tag } from "@/components/ui/tag";
-import { getNoticeById } from "@/data/notices";
+import { getNoticeById } from "@/lib/notion";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -10,7 +10,7 @@ interface PageProps {
 
 export default async function NoticeModal({ params }: PageProps) {
   const { id } = await params;
-  const notice = getNoticeById(Number(id));
+  const notice = await getNoticeById(id);
 
   if (!notice) {
     notFound();
@@ -32,7 +32,7 @@ export default async function NoticeModal({ params }: PageProps) {
           <span className="body03R text-muted-foreground">{notice.date}</span>
         </div>
         <h2 className="heading03B text-foreground mb-4">{notice.title}</h2>
-        <p className="body01R text-muted-foreground leading-relaxed">
+        <p className="body01R text-muted-foreground leading-relaxed whitespace-pre-wrap">
           {notice.content}
         </p>
       </div>

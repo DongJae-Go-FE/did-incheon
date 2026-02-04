@@ -7,6 +7,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Section, SectionTitle } from "../ui/common-layout";
+import type { CalendarItem } from "@/lib/notion";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,13 +27,19 @@ function CalendarCard({ date, title, description }: CalendarCardProps) {
           {date}
         </span>
         <h3 className="heading04B text-gray-900 line-clamp-2">{title}</h3>
-        {description && <p className="body02M text-gray-500 mt-1">{description}</p>}
+        {description && (
+          <p className="body02M text-gray-500 mt-1">{description}</p>
+        )}
       </div>
     </div>
   );
 }
 
-export default function CalendarSection() {
+interface CalendarSectionProps {
+  items: CalendarItem[];
+}
+
+export default function CalendarSection({ items }: CalendarSectionProps) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [progress, setProgress] = useState(0);
 
@@ -85,75 +92,15 @@ export default function CalendarSection() {
         }}
         className="[&_.swiper-slide]:h-auto!"
       >
-        <SwiperSlide>
-          <CalendarCard
-            date="26.02.08"
-            title="바다의 별 축제 중"
-            description="WYD 부스 운영, 성 가롤로 아쿠티스 성인 유해 공경 예식, 교구조직위원회 위원 임명장 수여"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.03.03 ~ 06.10"
-            title="구반장님 대상, WYD 안내"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.03.17"
-            title="지구조직위원회 위원 임명장 수여"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.03.17 ~ 27"
-            title="사순판공 시기, 본당사제 대상, WYD 안내"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.04.19 ~"
-            title="영성운동 2단계 시작"
-            description="성 가롤로 아쿠티스, 성인 유해 본당 순례"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard date="26.05.17 ~" title="해외 순례자 접수 시작" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.06.15 ~ 18"
-            title="사제 전체 연수 중, WYD 안내 및 사목적 협의"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard date="26.06.21 ~" title="홈스테이 본당별 접수 시작" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.07.18 ~ 19"
-            title="오스트리아 청년 대상, 홈스테이 2차 시범 운영"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.07.31 ~ 08.02"
-            title="Pre-인천 교구대회"
-            description="교구민 대상, 홈스테이 3차 시범 운영, 1차 지역/교회탐방 운영"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard date="26.09.14 ~ 17" title="WYD 국제회의" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard
-            date="26.10.30 ~ 11.03"
-            title="후쿠오카 교구 청년 교류"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CalendarCard date="26.11.03" title="교구 사제단 대상, WYD 안내" />
-        </SwiperSlide>
+        {items.map((item) => (
+          <SwiperSlide key={item.id}>
+            <CalendarCard
+              date={item.date}
+              title={item.title}
+              description={item.description}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Section>
   );

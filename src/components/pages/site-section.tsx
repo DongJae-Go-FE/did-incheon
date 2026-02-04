@@ -1,8 +1,17 @@
+"use client";
+
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { Plus, ChevronLeft, ChevronRight } from "lucide-react";
+
 import { Section, SectionTitle, BackDrop } from "../ui/common-layout";
 
-import { Plus } from "lucide-react";
+import "swiper/css";
+import "swiper/css/navigation";
 
 interface SiteCardProps {
   title: string;
@@ -12,7 +21,7 @@ interface SiteCardProps {
 
 function SiteCard({ title, href, imageSrc }: SiteCardProps) {
   return (
-    <li className="relative bg-black hover:[&_span]:bg-black">
+    <div className="relative bg-black hover:[&_span]:bg-black">
       <Link className="block" href={href}>
         <Image
           width={390}
@@ -28,35 +37,104 @@ function SiteCard({ title, href, imageSrc }: SiteCardProps) {
           </span>
         </div>
       </Link>
-    </li>
+    </div>
   );
 }
 
+const sites = [
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+  { title: "사이트명", href: "/", imageSrc: "/main04.png" },
+];
+
 export default function SiteSection() {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [progress, setProgress] = useState(0);
+
   return (
     <Section
       id="site"
       className="bg-no-repeat bg-center bg-cover relative bg-fixed min-h-auto"
       style={{ backgroundImage: "url('/main03.jpeg')" }}
     >
-      <SectionTitle className="text-white relative z-20">
-        관련 사이트
-      </SectionTitle>
+      <div className="flex justify-between items-center mb-8 relative z-20">
+        <SectionTitle className="text-white mb-0">관련 사이트</SectionTitle>
+
+        <div className="items-center gap-4 max-[1080px]:flex hidden">
+          <div className="w-40 h-0.5 bg-white/30 hidden sm:block relative">
+            <div
+              className="absolute left-0 top-0 h-full bg-white transition-all duration-300"
+              style={{ width: `${progress * 100}%` }}
+            />
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="size-10 rounded-full border border-white/30 bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
+              aria-label="이전"
+            >
+              <ChevronLeft className="size-5 text-white" />
+            </button>
+            <button
+              type="button"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="size-10 rounded-full border border-white/30 bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer"
+              aria-label="다음"
+            >
+              <ChevronRight className="size-5 text-white" />
+            </button>
+          </div>
+        </div>
+      </div>
+
       <ul
-        className="w-full grid gap-10 relative z-20 h-auto"
+        className="w-full gap-10 relative z-20 h-auto hidden min-[1081px]:grid"
         style={{
           gridTemplateColumns: "repeat(auto-fit, minmax(min(300px,100%), 1fr))",
         }}
       >
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
-        <SiteCard title="사이트명" href="/" imageSrc="/main04.png" />
+        {sites.map((site, index) => (
+          <li key={index}>
+            <SiteCard
+              title={site.title}
+              href={site.href}
+              imageSrc={site.imageSrc}
+            />
+          </li>
+        ))}
       </ul>
+
+      <div className="relative z-20 min-[1081px]:hidden">
+        <Swiper
+          modules={[Navigation]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onProgress={(_, prog) => {
+            setProgress(prog);
+          }}
+          spaceBetween={16}
+          slidesPerView={1}
+          className="[&_.swiper-slide]:h-auto!"
+        >
+          {sites.map((site, index) => (
+            <SwiperSlide key={index}>
+              <SiteCard
+                title={site.title}
+                href={site.href}
+                imageSrc={site.imageSrc}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
       <BackDrop className="backdrop-brightness-100 blur-xs" />
     </Section>
   );

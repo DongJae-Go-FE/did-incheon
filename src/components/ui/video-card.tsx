@@ -17,7 +17,7 @@ export default function VideoCard({ videoId, title, date }: VideoCardProps) {
           allowFullScreen
         />
       </div>
-      <div className="flex-1 flex flex-col pt-10 pb-30.5 gap-y-15 text-gray-900 max-sm:gap-y-8 max-sm:pb-10">
+      <div className="flex-1 flex flex-col pt-10 gap-y-15 text-gray-900 max-sm:gap-y-8">
         <Link
           href={`https://www.youtube.com/watch?v=${videoId}`}
           target="_blank"

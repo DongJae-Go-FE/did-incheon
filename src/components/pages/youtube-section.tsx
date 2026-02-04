@@ -1,59 +1,87 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import { Section, SectionTitle } from "../ui/common-layout";
-
 import VideoCard from "@/components/ui/video-card";
+import type { YoutubeItem } from "@/lib/notion";
 
-export default function YoutubeSection() {
+import "swiper/css";
+import "swiper/css/navigation";
+
+interface YoutubeSectionProps {
+  items: YoutubeItem[];
+}
+
+export default function YoutubeSection({ items }: YoutubeSectionProps) {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [progress, setProgress] = useState(0);
+
   return (
-    <Section id="youtube" style={{ backgroundImage: "url('/bg01.png')" }} className="bg-no-repeat bg-fixed bg-cover">
-      <SectionTitle>추천 영상</SectionTitle>
-      <ul
-        className="grid gap-x-4"
-        style={{
-          gridTemplateColumns:
-            "repeat(auto-fill, minmax(min(650px,100%), 1fr))",
+    <Section
+      id="youtube"
+      style={{ backgroundImage: "url('/bg01.png')" }}
+      className="bg-no-repeat bg-fixed bg-cover min-h-auto"
+    >
+      <div className="flex justify-between items-center mb-8">
+        <SectionTitle className="mb-0">추천 영상</SectionTitle>
+        <div className="flex items-center gap-4">
+          <div className="w-60 h-0.5 bg-gray-300 hidden sm:block relative">
+            <div
+              className="absolute left-0 top-0 h-full bg-black transition-all duration-300"
+              style={{ width: `${progress * 100}%` }}
+            />
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => swiperRef.current?.slidePrev()}
+              className="size-10 rounded-full border bg-black flex items-center justify-center cursor-pointer"
+              aria-label="이전"
+            >
+              <ChevronLeft className="size-5 text-white" />
+            </button>
+            <button
+              type="button"
+              onClick={() => swiperRef.current?.slideNext()}
+              className="size-10 rounded-full border bg-black flex items-center justify-center cursor-pointer"
+              aria-label="다음"
+            >
+              <ChevronRight className="size-5 text-white" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <Swiper
+        modules={[Navigation]}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
         }}
+        onProgress={(_, prog) => {
+          setProgress(prog);
+        }}
+        spaceBetween={16}
+        slidesPerView={1}
+        breakpoints={{
+          1280: { slidesPerView: 2 },
+        }}
+        className="[&_.swiper-slide]:h-auto!"
       >
-        <VideoCard
-          videoId="9dcFG9wy87c"
-          title="WYD를 소개합니다 (What is WYD?)"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="5_Uq41e0Qb8"
-          title="WYD! 서울이 선택된 이유?!"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="aU6tZzIMKGY"
-          title="사랑하는 젊은이들에게"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="qqMgOHjdUS8"
-          title="세계청년대회(World Youth Day) 소개"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="9iBkc5uhhKQ"
-          title="2027 서울 WYD, 전 세계 청년들에게 가장 기억에 남을 순간은?"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="n2zRJkke9g4"
-          title="편집 WYD 홈스테이"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="lVGg2J6eSwg"
-          title="2005 쾰른, 2011 스페인 홈스테이 (부산교구)"
-          date="2026.01.20"
-        />
-        <VideoCard
-          videoId="yfszp1d68iQ"
-          title="2025년 청년 교류 프로젝트 유익 with 후쿠오카"
-          date="2026.01.20"
-        />
-      </ul>
+        {items.map((video) => (
+          <SwiperSlide key={video.id}>
+            <VideoCard
+              videoId={video.videoId}
+              title={video.title}
+              date={video.date}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </Section>
   );
 }

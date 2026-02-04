@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Tag } from "@/components/ui/tag";
-import { getNoticeById, noticesData } from "@/data/notices";
+import { getNoticeById, getAllNoticeIds } from "@/lib/notion";
 import { notFound } from "next/navigation";
 
 interface PageProps {
@@ -9,14 +9,13 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return noticesData.map((notice) => ({
-    id: String(notice.id),
-  }));
+  const ids = await getAllNoticeIds();
+  return ids.map((id) => ({ id }));
 }
 
 export default async function NoticePage({ params }: PageProps) {
   const { id } = await params;
-  const notice = getNoticeById(Number(id));
+  const notice = await getNoticeById(id);
 
   if (!notice) {
     notFound();
@@ -63,7 +62,7 @@ export default async function NoticePage({ params }: PageProps) {
             </div>
             <h1 className="heading02B text-foreground mb-6">{notice.title}</h1>
             <div className="prose prose-gray max-w-none">
-              <p className="body01R text-muted-foreground leading-relaxed">
+              <p className="body01R text-muted-foreground leading-relaxed whitespace-pre-wrap">
                 {notice.content}
               </p>
             </div>

@@ -10,17 +10,31 @@ import NoticeSection from "@/components/pages/notice-section";
 import SiteSection from "@/components/pages/site-section";
 import FaqSection from "@/components/pages/faq-section";
 
-export default function Home() {
+import {
+  getCalendarData,
+  getNoticeData,
+  getYoutubeData,
+  getFaqData,
+} from "@/lib/notion";
+
+export default async function Home() {
+  const [calendarItems, noticeItems, youtubeItems, faqItems] = await Promise.all([
+    getCalendarData(),
+    getNoticeData(),
+    getYoutubeData(),
+    getFaqData(),
+  ]);
+
   return (
     <>
       <Header />
       <main className="pt-20">
         <SliderSection />
-        <CalendarSection />
-        <NoticeSection />
-        <YoutubeSection />
+        <CalendarSection items={calendarItems.toReversed()} />
+        <NoticeSection items={noticeItems.toReversed()} />
+        <YoutubeSection items={youtubeItems.toReversed()} />
         <SiteSection />
-        <FaqSection />
+        <FaqSection items={faqItems} />
       </main>
       <Footer />
       {/* <Popup /> */}
