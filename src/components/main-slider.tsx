@@ -159,7 +159,7 @@ export default function MainSlider() {
       <div
         className={cn(
           "item-inside-viewport absolute z-20 flex w-68 justify-between right-auto left-8 translate-x-0",
-          "max-[727px]:bottom-[10dvh] max-[727px]:left-1/2 max-[727px]:-translate-x-1/2 max-[1080px]:bottom-[13.5dvw] max-[1080px]:left-1/2 max-[1080px]:-translate-x-1/2 bottom-[8dvw]",
+          "max-[727px]:bottom-[1dvh] max-[727px]:left-1/2 max-[727px]:-translate-x-1/2 max-[1080px]:bottom-[13.5dvw] max-[1080px]:left-1/2 max-[1080px]:-translate-x-1/2 bottom-[8dvw]",
         )}
       >
         <button
