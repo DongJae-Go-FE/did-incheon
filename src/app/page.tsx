@@ -36,10 +36,10 @@ export default async function Home() {
       <Header />
       <main className="pt-20">
         <SliderSection />
-        <CalendarSection items={calendarItems.toReversed()} />
-        <NoticeSection items={noticeItems.toReversed()} />
-        <YoutubeSection items={youtubeItems.toReversed()} />
-        <SiteSection items={siteItems.toReversed()} />
+        <CalendarSection items={[...calendarItems].reverse()} />
+        <NoticeSection items={[...noticeItems].reverse()} />
+        <YoutubeSection items={[...youtubeItems].reverse()} />
+        <SiteSection items={[...siteItems].reverse()} />
         <FaqSection items={faqItems} />
       </main>
       <Footer />
